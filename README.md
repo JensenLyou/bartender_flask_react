@@ -12,3 +12,7 @@
 1. Type "toggleThoughts" to turn on/off thought prompts
 2. Type "clear" to clear memory
 3. Type "viewMemory: {username}" to view past conversation history with a user
+
+
+## Example Usage
+<img width="1070" alt="Screen Shot 2023-05-17 at 10 36 53 AM" src="https://github.com/seanpixel/bartender-npc/assets/112411911/254e8930-4f8d-48e6-a1cd-77d0fa6de383">
