@@ -94,6 +94,7 @@ class Agent():
             if user['name'] == username:
                 self.chat_indexes = user['chat_indexes']
 
+
     def setUser(self, user):
         self.curUser = user
         self.getUser(user)
@@ -134,6 +135,7 @@ class Agent():
         with open('users.json', 'w') as file:
                 users = json.dump(users, file)
             
+    # Clears all memory and resets agent
     def clearMemory(self):
         self.memory.delete(deleteAll='true', namespace='Thoughts')
 
@@ -143,7 +145,27 @@ class Agent():
         with open('users.json', 'w') as f:
             f.write('[{"name": "user", "chat_indexes": []}]')
 
+    # Look at the memory of a single user
+    def viewMemory(self, username):
+        users = []
+        idx = []
+        with open('users.json', 'r') as file:
+            users = json.load(file)
 
+        for user in users:
+            if user['name'] == username:
+                idx = user['chat_indexes']
+        
+        for i in range(0, len(idx)):
+            idx[i] = 'thought-'+str(idx[i])
+
+        history = self.memory.fetch(ids=idx, namespace=THOUGHTS)
+        vectors = history['vectors']
+        for id in idx:
+            print(vectors[f"{id}"]['metadata']['thought_string'] + "\n\n")
+
+        
+        
 
     def createIndex(self, table_name=None):
         # Create Pinecone index
@@ -168,7 +190,7 @@ class Agent():
     # Adds new Memory to agent, types are: THOUGHTS, ACTIONS, QUERIES, INFORMATION
     def updateMemory(self, new_thought, thought_type):
         with open('memory_count.yaml', 'w') as f:
-             yaml.dump({'count': str(self.thought_id_count)}, f)
+             yaml.dump({'count': str(f"{self.thought_id_count}")}, f)
 
         if thought_type==INFORMATION:
             new_thought = "This is information fed to you by the user:\n" + new_thought
