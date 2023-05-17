@@ -80,6 +80,7 @@ class Agent():
         self.thought_id_count = int(counter['count'])
         self.curUser = ""
         self.chat_indexes = []
+        self.seeThoughts = False
 
     def set_init_prompt(self, init_prompt):
         self.init_prompt = init_prompt
@@ -90,7 +91,6 @@ class Agent():
             users = json.load(file)
         
         for user in users:
-            print(user)
             if user['name'] == username:
                 self.chat_indexes = user['chat_indexes']
 
@@ -107,7 +107,6 @@ class Agent():
             for index in self.chat_indexes[-n:]:
                 indexes.append(f'thought-{index}')
 
-            print(indexes)
             history = self.memory.fetch(ids=indexes, namespace=THOUGHTS)
 
             vectors = history['vectors']
@@ -135,7 +134,15 @@ class Agent():
         with open('users.json', 'w') as file:
                 users = json.dump(users, file)
             
-            
+    def clearMemory(self):
+        self.memory.delete(deleteAll='true', namespace='Thoughts')
+
+        with open('memory_count.yaml', 'w') as f:
+            f.write("count: '0'")
+
+        with open('users.json', 'w') as f:
+            f.write('[{"name": "user", "chat_indexes": []}]')
+
 
 
     def createIndex(self, table_name=None):
@@ -211,8 +218,10 @@ class Agent():
         chat = self.getChatHistory(2)
         internalThoughtPrompt = internalThoughtPrompt.replace("{conversation_history}", chat)
 
-        print("------------INTERNAL THOUGHT PROMPT------------")
-        print(internalThoughtPrompt)
+        if (self.seeThoughts):
+            print("------------INTERNAL THOUGHT PROMPT START----------")
+            print(internalThoughtPrompt)
+            print("------------INTERNAL THOUGHT PROMPT END----------\n")
         internal_thought = generate(internalThoughtPrompt) # OPENAI CALL: top_matches and query text is used here
         
         # Debugging purposes
@@ -244,8 +253,10 @@ class Agent():
         chat = self.getChatHistory(2)
         externalThoughtPrompt = externalThoughtPrompt.replace("{conversation_history}", chat)
 
-        print("------------EXTERNAL THOUGHT PROMPT------------")
-        print(externalThoughtPrompt)
+        if (self.seeThoughts):
+            print("------------EXTERNAL THOUGHT PROMPT START----------")
+            print(externalThoughtPrompt)
+            print("------------EXTERNAL THOUGHT PROMPT END----------\n")
         external_thought = generate(externalThoughtPrompt) # OPENAI CALL: top_matches and query text is used here
 
         # Add current chat index to user
