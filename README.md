@@ -11,3 +11,4 @@
 ## Extra Commands
 1. Type "toggleThoughts" to turn on/off thought prompts
 2. Type "clear" to clear memory
+3. Type "viewMemory: {username}" to view past conversation history with a user
