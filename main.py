@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 #AGENT_NAME = os.getenv("AGENT_NAME", "my-agent")
-AGENT_NAME = "Scrooge"
+AGENT_NAME = "scrooge"
 
 agent = Agent(AGENT_NAME)
 
@@ -35,6 +35,9 @@ while True:
             print("Memory Cleared")
         elif (userInput == "toggleThoughts"):
             agent.seeThoughts = not agent.seeThoughts
+        elif (userInput.startswith("viewMemory:")):
+            username = " ".join(userInput.split(" ")[1:])
+            agent.viewMemory(username)
         else:
             print(agent.action(userInput), "\n")
     else:
