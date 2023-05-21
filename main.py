@@ -1,12 +1,11 @@
 import agent
-import os
 from agent import Agent
 from dotenv import load_dotenv
 
 # Load default environment variables (.env)
 load_dotenv()
 
-#AGENT_NAME = os.getenv("AGENT_NAME", "my-agent")
+# AGENT_NAME = os.getenv("AGENT_NAME", "my-agent")
 AGENT_NAME = "scrooge"
 
 agent = Agent(AGENT_NAME)
