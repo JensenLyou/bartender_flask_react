@@ -70,6 +70,16 @@ def process_input():
     return jsonify(response)
 
 
+@app.route('/v1/test/', methods=['POST'])
+@cross_origin()
+def testPost():
+    data = request.json
+    getData = data.get('input')
+    return jsonify({
+        data: f'this is your typing {getData}'
+    })
+
+
 @app.route('/test')
 @cross_origin()
 def test():
