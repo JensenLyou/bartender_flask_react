@@ -26,7 +26,7 @@ agent.setUser(curUser)
 @app.route('/v1/chat', methods=['POST'])
 @cross_origin()
 def process_input():
-    data = request.json  # 获取前端传递的JSON数据
+    data = request.json
     user_input = data.get('user_input')
 
     if user_input:
@@ -70,14 +70,13 @@ def process_input():
     return jsonify(response)
 
 
-@app.route('/v1/test/', methods=['POST'])
+@app.route('/v1/test', methods=['POST'])
 @cross_origin()
 def testPost():
     data = request.json
-    getData = data.get('input')
-    return jsonify({
-        data: f'this is your typing {getData}'
-    })
+
+    result = {'message': 'Data received successfully!', 'data': data}
+    return jsonify(result)
 
 
 @app.route('/test')
