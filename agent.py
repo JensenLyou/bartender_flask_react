@@ -44,7 +44,7 @@ k_n = 3
 pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 
 # initialize openAI
-openai.api_key = "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"
+openai.api_key = OPENAI_API_KEY
 
 
 def get_ada_embedding(text):

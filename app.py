@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+from flask.helpers import send_from_directory
 import agent
-import os
 from agent import Agent
 from dotenv import load_dotenv
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder='./build', static_url_path='')
+CORS(app)
 # Load default environment variables (.env)
 load_dotenv()
 
@@ -23,6 +24,7 @@ agent.setUser(curUser)
 
 
 @app.route('/v1/chat', methods=['POST'])
+@cross_origin()
 def process_input():
     data = request.json  # 获取前端传递的JSON数据
     user_input = data.get('user_input')
@@ -66,6 +68,12 @@ def process_input():
         }
 
     return jsonify(response)
+
+
+@app.route('/')
+@cross_origin()
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
 
 
 if __name__ == '__main__':
