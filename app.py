@@ -70,6 +70,12 @@ def process_input():
     return jsonify(response)
 
 
+@app.route('/test')
+@cross_origin()
+def test():
+    return 'Hello,This is test log'
+
+
 @app.route('/')
 @cross_origin()
 def serve():
