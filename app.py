@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 from flask.helpers import send_from_directory
 import agent
+import os
 from agent import Agent
 from dotenv import load_dotenv
 
@@ -79,7 +80,7 @@ def testPost():
     return jsonify(result)
 
 
-@app.route('/test')
+@app.route('/test', methods=['GET'])
 @cross_origin()
 def test():
     return 'Hello,This is test log'
@@ -92,4 +93,4 @@ def serve():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 80))
