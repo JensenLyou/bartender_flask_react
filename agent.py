@@ -19,7 +19,7 @@ load_dotenv()
 OPENAI_MODEL = os.getenv("OPENAI_MODEL") or "gpt-3.5-turbo"
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY")
-# OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PINECONE_API_ENV = os.getenv("PINECONE_API_ENV")
 # PINECONE_API_ENV = "asia-southeast1-gcp"
 
@@ -44,7 +44,7 @@ k_n = 3
 pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 
 # initialize openAI
-openai.api_key = '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'
+openai.api_key = OPENAI_API_KEY
 
 
 def get_ada_embedding(text):
