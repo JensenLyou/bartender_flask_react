@@ -50,7 +50,7 @@ def process_input():
         elif user_input == "toggleThoughts":
             agent.seeThoughts = not agent.seeThoughts
             response = {
-                'result': 'Thoughts toggled'
+                'result': 'Thoughts toggled, please enter a new message to see AI agent internal thoughts.'
             }
         elif user_input.startswith("viewMemory:"):
             username = " ".join(user_input.split(" ")[1:])

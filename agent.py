@@ -312,7 +312,7 @@ class Agent():
         if (self.seeThoughts):
             startStr = "------------EXTERNAL THOUGHT PROMPT START----------\n"
             endStr = "------------EXTERNAL THOUGHT PROMPT END----------\n"
-            output_str = startStr + externalMemoryPrompt + "\n" + endStr + external_thought
+            output_str = startStr + externalThoughtPrompt + "\n" + endStr + external_thought
             return output_str
         else:
             return external_thought
