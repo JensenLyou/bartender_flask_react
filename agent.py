@@ -44,8 +44,8 @@ k_n = 3
 pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 
 # initialize openAI
-# openai.api_key = OPENAI_API_KEY
-openai.api_key = "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"
+openai.api_key = OPENAI_API_KEY
+
 
 print(f'api_key:{openai.api_key}')
 
