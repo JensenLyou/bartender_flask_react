@@ -46,7 +46,7 @@ pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 # initialize openAI
 openai.api_key = OPENAI_API_KEY
 
-print(f'api_key:${openai.api_key}')
+print(f'api_key:{openai.api_key}')
 
 
 def get_ada_embedding(text):
