@@ -36,7 +36,8 @@ while True:
             agent.seeThoughts = not agent.seeThoughts
         elif (userInput.startswith("viewMemory:")):
             username = " ".join(userInput.split(" ")[1:])
-            agent.viewMemory(username)
+            content = agent.viewMemory(username)
+            print(content)
         else:
             print(agent.action(userInput), "\n")
     else:

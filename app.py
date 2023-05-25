@@ -54,9 +54,9 @@ def process_input():
             }
         elif user_input.startswith("viewMemory:"):
             username = " ".join(user_input.split(" ")[1:])
-            agent.viewMemory(username)
+            content = agent.viewMemory(username)
             response = {
-                'result': f'Memory viewed for user {username}'
+                'result': f'Memory viewed for user {username}\n{content}'
             }
         else:
             result = agent.action(user_input)

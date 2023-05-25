@@ -44,7 +44,8 @@ k_n = 3
 pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_API_ENV)
 
 # initialize openAI
-openai.api_key = OPENAI_API_KEY
+# openai.api_key = OPENAI_API_KEY
+openai.api_key = "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"
 
 print(f'api_key:{openai.api_key}')
 
@@ -165,8 +166,12 @@ class Agent():
 
         history = self.memory.fetch(ids=idx, namespace=THOUGHTS)
         vectors = history['vectors']
+        # for id in idx:
+        #     print(vectors[f"{id}"]['metadata']['thought_string'] + "\n\n")
+        output_str = ""
         for id in idx:
-            print(vectors[f"{id}"]['metadata']['thought_string'] + "\n\n")
+            output_str += vectors[f"{id}"]['metadata']['thought_string'] + "\n\n"
+        return output_str
 
     def createIndex(self, table_name=None):
         # Create Pinecone index
@@ -304,7 +309,13 @@ class Agent():
             "{external_thought}", external_thought).replace("{username}", self.curUser)
         self.updateMemory(externalMemoryPrompt, THOUGHTS)
 
-        return external_thought
+        if (self.seeThoughts):
+            startStr = "------------EXTERNAL THOUGHT PROMPT START----------\n"
+            endStr = "------------EXTERNAL THOUGHT PROMPT END----------\n"
+            output_str = startStr + externalMemoryPrompt + "\n" + endStr + external_thought
+            return output_str
+        else:
+            return external_thought
 
     # Make agent think some information
 
