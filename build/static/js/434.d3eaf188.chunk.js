@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmurder_mystery=self.webpackChunkmurder_mystery||[]).push([[434],{9434:function(e,r,n){n.r(r);var s=n(7313),u=n(8467),c=n(2135),d=n(6417),i=function(){var e=(0,u.UO)().id;return console.log("Children"),(0,d.jsxs)("div",{children:["Children-",e,(0,d.jsx)(c.rU,{to:-1,children:"back"})]})};r.default=(0,s.memo)(i)}}]);

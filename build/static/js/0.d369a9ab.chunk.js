@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkbartender_frontend=self.webpackChunkbartender_frontend||[]).push([[0],{1e3:function(e,r,n){n.r(r);var t=n(6417);r.default=function(){return(0,t.jsx)("div",{children:"ErrorPage"})}}}]);
