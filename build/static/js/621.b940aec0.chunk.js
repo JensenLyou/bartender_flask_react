@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmurder_mystery=self.webpackChunkmurder_mystery||[]).push([[621],{9621:function(e,r,s){s.r(r);var t=s(6417);r.default=function(){return console.log("OthersPages"),(0,t.jsx)("div",{children:"OthersPages"})}}}]);

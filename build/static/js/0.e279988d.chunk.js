@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmurder_mystery=self.webpackChunkmurder_mystery||[]).push([[0],{1e3:function(r,e,u){u.r(e);var n=u(6417);e.default=function(){return(0,n.jsx)("div",{children:"ErrorPage"})}}}]);

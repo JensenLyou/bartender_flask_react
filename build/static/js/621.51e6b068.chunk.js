@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkbartender_frontend=self.webpackChunkbartender_frontend||[]).push([[621],{9621:function(e,n,r){r.r(n);var t=r(6417);n.default=function(){return console.log("OthersPages"),(0,t.jsx)("div",{children:"OthersPages"})}}}]);
